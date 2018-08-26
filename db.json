@@ -28,22 +28,22 @@
       "currentLocation": "(47.224, 235.23)"
     },
     {
-      "id": 4,
       "currentLocation": "(12.43, 35.27)",
-      "state": 0,
       "destinationLocation": "(345, 657)",
-      "currentOrder": -1,
-      "pastOrders": "",
-      "lastOrderDeliveredTime": "03:45:12"
+      "id": 4,
+      "currentOrder": 78,
+      "state": 1,
+      "lastOrderDeliveredTime": "03:45:12",
+      "pastOrders": ""
     },
     {
-      "id": 5,
       "currentLocation": "(12.65, 23.87)",
-      "state": 0,
       "destinationLocation": "(345, 657)",
-      "currentOrder": -1,
-      "pastOrders": "",
-      "lastOrderDeliveredTime": "03:45:12"
+      "id": 5,
+      "currentOrder": 65,
+      "state": 1,
+      "lastOrderDeliveredTime": "03:45:12",
+      "pastOrders": ""
     },
     {
       "destinationLocation": "(345, 657)",
