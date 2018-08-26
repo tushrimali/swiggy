@@ -41,13 +41,16 @@ A service that handles everything to do with Delivery Executives. It contains me
  
 **start**: Given a batch of input orders (when you hit the endpoint with an order list json), order them according to a scoring methodology (In this case, the scoring system being what order was placed the earliest)
  
-**match**: Given a list of orders, process each order by fetching available DEs from our DB. Available agents are are ordered by their distance to the restaurant (first mile). Next, pick the agent with the highest waiting time. Finally, we send a HTTP PUT request to our database server informing it that above agent needs to be taken off grid and is not available for further assignments in this batch.
+**match**: Given a list of orders, process each order by fetching available DEs from our DB. Available agents are are ordered by their distance to the restaurant (first mile) and an agent with the highest waiting time is finally picked. 
+Lastly, we send a HTTP PUT request to our DB server informing it that above agent needs to be taken off grid and is not available for further assignments in this batch.
  
 My assignment system is extremely simple. Ideally I would like to assign a score (e.g. custom cost function) to each agent taking into account their closeness and waiting time (like say, 1.5 points for each km away from the restaurant and -1 point for every 5 minutes spend idle. The executive with the lowest score would then be assigned the order).
 
-**haversine_helper**: A method to compute the distance between 2 points (taken from a post on stackoverflow)
+**orderRanking**: Rank orders based on their waitTimes. This is where you would prioritise orders if they come from premium customers.
 
-**orderRanking**: Rank orders based on their waitTimes. This is where you would prioritise orders if they come from a premium customers.
+### AssignmentServer.py
+
+**haversine_helper**: Nothing fancy. A method to compute the distance between 2 points (taken from a post on stackoverflow)
 
 ### DB Schema
 
@@ -59,15 +62,15 @@ db.json contains the following fields:
 - **destinationLocation**: Customer Address
 - **currentOrder**: Populated if an Order is being Delivered
 - **pastOrders**: List of Past Orders (potential Keys into an Order Database)
-- **astOrderDeliveredTime**: Last Time th Executive Delivered an order
+- **lastOrderDeliveredTime**: Last Time the executive delivered an order
 
 ## Assumptions and Extensions
 
-I've tried to emulate a real-time assignment system by adding an endpoint that processes a batch of Orders and queries/updates a DE database. In order for this to work correctly, an additional script would be require (a cron job equivalent) that regularly updates the DE's location in db.json (assuming a constant speed). If a DE has reached their destination location coordinates, we reset their state to Idle and add the order to the list of past Orders.
+I've tried to emulate a real-time assignment system by adding an endpoint that processes a batch of Orders and queries/updates a DE database. In order for this to work correctly, an additional service/script/module would be required (a cron job equivalent) that regularly updates the DE's location in db.json (assuming a constant speed). If a DE has reached their destination location coordinates, we reset their state to Idle and add the order to the list of his/her past Orders.
 
-- Each DE gets mapped to a single order. This might not be the best scenario. In real life, a single DE can pick up multipl orders from a single restaurant
-- Time in the input needs to be padded with a leading 0 if hour is a single digit. I haven't made the system particularly robust in terms of edge cases (input must be valid time, location should be valid coordinates etc.).
-- There's enough free agents at all times to pick an order
+- Assumption 1: Each DE gets mapped to a single order. This might not be the best scenario. In real life, a single DE can cater to multiple orders from a single restaurant.
+- Assumption 2: Time in the input needs to be padded with a leading 0 if hour is a single digit. I haven't made the system particularly robust in terms of edge cases (input must be valid time, location should be valid coordinates etc.) and instead focused on ther overall modularity of the system
+- Assumption 3: There must enough free agents at all times to pick an order
 
 
  
