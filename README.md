@@ -2,9 +2,9 @@
 
 ## Python and Node modules required:
 
-npm install -g json-server
+[json-server](https://www.npmjs.com/package/json-server): npm install -g json-server
 
-pip install endpoints
+[endpoints](https://pypi.org/project/endpoints/): pip install endpoints
 
 ## Steps to run the project
 **1) json-server --watch db.json**
