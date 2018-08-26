@@ -49,5 +49,17 @@ My assignment system is extremely simple. Ideally you would want to assign a sco
 haversine_helper: A simple method to compute the distance between 2 points (taken from stackoverflow)
 
 orderRanking: Rank orders based on their waitTimes. This is where you would prioritise orders if they come from a premium customers.
+
+### DB Schema
+
+db.json contains the following fields:
+
+**id**: Delivery Executive's ID
+**currentLocation**: Delivery Executive's Current Location
+**state**: Delivery Executive's State (0 = Idle, 1 = TravelingToRestaurant, 2 = RestaurantToCustomer, 3 = Offline)
+**destinationLocation**: Customer Address
+**currentOrder**: Populated if an Order is being Delivered
+**pastOrders**: List of Past Orders (potential Keys into an Order Database)
+**astOrderDeliveredTime**: Last Time th Executive Delivered an order
  
  
