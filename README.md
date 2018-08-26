@@ -67,7 +67,7 @@ I've tried to emulate a real-time assignment system by adding an endpoint that p
 
 - Each DE gets mapped to a single order. This might not be the best scenario. In real life, a single DE can pick up multipl orders from a single restaurant
 - Time in the input needs to be padded with a leading 0 if hour is a single digit. I haven't made the system particularly robust in terms of edge cases (input must be valid time, location should be valid coordinates etc.).
-
+- There's enough free agents at all times to pick an order
 
 
  
