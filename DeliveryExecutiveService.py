@@ -1,5 +1,7 @@
 import json
 import requests
+from Utilities import haversine_helper
+from heapq import nsmallest
 
 URL = "http://localhost:3000/DES/"
 
@@ -17,6 +19,20 @@ class DeliveryExecutiveService:
 				executives.append(de_object)
 
 		return executives
+
+	def sortBasedOnTimes(self, executives):
+		return executives.sort(key=lambda x: x.lastOrderDeliveredTime, reverse=True)
+
+	def sortBasedOnDistanceFromLocation(self, location):
+		return executives.sort(key=lambda x: haversine_helper(location, x.location))
+
+	def topNclosest(self, executives, location):
+		closestNagents = (nsmallest(2, executives, key=lambda x: haversine_helper(location, x.location)))
+		return closestNagents
+
+	def highestWaitingTimeAgent(self, executives):
+		executives.sort(key=lambda x: x.lastOrderDeliveredTime, reverse=True)
+		return executives[0]
 
 	def markExecutiveAsBusy(self, agent, orderId):
 		r = requests.get(url = URL+str(agent.id))
