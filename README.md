@@ -35,6 +35,17 @@ Entry point for any request to the service. This is bolierplate code taken direc
 
 A service that handles everything to do with Delivery Executives. It contains methods to communicate with your DE database (CRUD operations, fetching agents who are free, marking agents as busy etc.). Although beyond the scope of the assignment, this is the service where you would add additional additional interfaces to your DE database (say, maintain a cache of agents who are free, remove agents who've gone offline etc.)
 
+### Order.py
+
+Order: A class to contain order information
+
+OrderAggregatorService: Rank orders coming thorugh. Ranking could be based on any of the following
+- Order Placed Time
+- Presence of Premium Customer Flag
+- Orders in a high demand area
+
+Appropriately, the 'queue' of the current batch of orders would also be more sophisticated (instead of a simple list like we have here)
+
 ### AssignmentServer.py
 
  The central piece of the assignment the AssignmentServer class. It contains the following methods:
@@ -45,8 +56,6 @@ A service that handles everything to do with Delivery Executives. It contains me
 Lastly, we send a HTTP PUT request to our DB server informing it that above agent needs to be taken off grid and is not available for further assignments in this batch.
  
 My assignment system is extremely simple. Ideally I would like to assign a score (e.g. custom cost function) to each agent taking into account their closeness and waiting time (like say, 1.5 points for each km away from the restaurant and -1 point for every 5 minutes spend idle. The executive with the lowest score would then be assigned the order).
-
-**orderRanking**: Rank orders based on their waitTimes. This is where you would prioritise orders if they come from premium customers.
 
 ### AssignmentServer.py
 
