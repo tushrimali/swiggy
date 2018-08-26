@@ -41,12 +41,11 @@ A service that handles everything to do with Delivery Executives. It contains me
  
  start: Given a batch of input orders (when you hit the endpoint with an order list json), order them according to a scoring methodology (In this case, the scoring system being what order was placed the earliest)
  
- match: Given a list of orders, process each one by fetching available DEs from our DB. Available agent are then are ordered by their distance to the order restaurant (first mile). From this list, we pick the agent with the highest waiting time. We also send a HTTP PUT request to our database server informing it that above agent needs to be taken off grid and is not available for further assignments
+ match: Given a list of orders, process each order by fetching available DEs from our DB. Available agents are are ordered by their distance to the restaurant (first mile). Next, pick the agent with the highest waiting time. Finally, we send a HTTP PUT request to our database server informing it that above agent needs to be taken off grid and is not available for further assignments in this batch.
  
- 
-My assignment system is extremely simple. Ideally you would want to assign a score (custom cost function) to each agent taking into account their closeness and waiting time (like say, 1.5 points for each km away from the restaurant and -1 point for every 5 minutes spend idle). The lowest score would then be our Delivery guy.
+My assignment system is extremely simple. Ideally I would like to assign a score (e.g. custom cost function) to each agent taking into account their closeness and waiting time (like say, 1.5 points for each km away from the restaurant and -1 point for every 5 minutes spend idle. The executive with the lowest score would then be assigned the order).
 
-haversine_helper: A simple method to compute the distance between 2 points (taken from stackoverflow)
+haversine_helper: A method to compute the distance between 2 points (taken from a post on stackoverflow)
 
 orderRanking: Rank orders based on their waitTimes. This is where you would prioritise orders if they come from a premium customers.
 
