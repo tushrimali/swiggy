@@ -29,7 +29,7 @@ Subsequent requests to this endpoint would look like:
 
 ### runServer.py
 
-Entry point for any request to the service. This is bolierplate code taken directly from the endpoints module documents
+Entry point for any request to the service. This is bolierplate code taken directly from the endpoints module documentation.
 
 ### DeliveryExecutiveService.py
 
