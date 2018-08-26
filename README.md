@@ -9,11 +9,11 @@
 ## Steps to run the project
 **1) json-server --watch db.json**
 
-The above command instantiates and sets up a local server that houses your database. The database file here is db.json, and for the purposes of our project it will contain all our DE metadata. Try any of the following:
+The above command instantiates and sets up a local server that houses your database. The database file here is db.json, and for the purposes of our project it will contain all our DE metadata. Try any of the following to get familiar with the server schema:
   
-  GET http://localhost:3000/DES
+  All available agents: GET http://localhost:3000/DES
   
-  GET http://localhost:3000/DES/1
+  Data for a Specific agent: GET http://localhost:3000/DES/{executive_id}
 
 **2) endpoints --prefix=runServer --host=localhost:8000**
 
