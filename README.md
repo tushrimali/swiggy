@@ -1,10 +1,10 @@
-Swiggy Auto Assignment Architecture
+# Swiggy Auto Assignment Architecture
 
-Setup:
+## Setup:
 
 Install python
 Install Node (npm)
 
-Python and Node modules:
+## Python and Node modules:
 npm install -g json-server
 pip install endpoints
