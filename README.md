@@ -66,6 +66,7 @@ db.json contains the following fields:
 I've tried to emulate a real-time assignment system by adding an endpoint that processes a batch of Orders and queries/updates a DE database. In order for this to work correctly, an additional script would be require (a cron job equivalent) that regularly updates the DE's location in db.json (assuming a constant speed). If a DE has reached their destination location coordinates, we reset their state to Idle and add the order to the list of past Orders.
 
 - Each DE gets mapped to a single order. This might not be the best scenario. In real life, a single DE can pick up multipl orders from a single restaurant
+- Time in the input needs to be padded with a leading 0 if hour is a single digit. I haven't made the system particularly robust in terms of edge cases (input must be valid time, location should be valid coordinates etc.).
 
 
 
