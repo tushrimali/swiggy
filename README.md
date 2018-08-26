@@ -33,11 +33,11 @@ Entry point for any request to the service. This is bolierplate code taken direc
 
 ### DeliveryExecutiveService.py
 
-A service that handles everything to do with Delivery Executives. It contains methods to communicate with your DE database (CRUD operations, fetching agents who are free, marking agents as busy etc.). Although, beyond the scope of the assignment, this is the service where you would add additional additional interfaces to your DE database
+A service that handles everything to do with Delivery Executives. It contains methods to communicate with your DE database (CRUD operations, fetching agents who are free, marking agents as busy etc.). Although beyond the scope of the assignment, this is the service where you would add additional additional interfaces to your DE database (say, maintain a cache of agents who are free, remove agents who've gone offline etc.)
 
 ### AssignmentServer.py
 
- The core piece of the assignment is house the AssignmentServer class. It contains the following methods:
+ The central piece of the assignment the AssignmentServer class. It contains the following methods:
  
  start: Given a batch of input orders (when you hit the endpoint with an order list json), order them according to a scoring methodology (In this case, the scoring system being what order was placed the earliest)
  
