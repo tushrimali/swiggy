@@ -11,7 +11,7 @@ class AssignmentServer:
 			od = Order(order['id'], order['restaurant_location'], order['ordered_time'])
 			orders.append(od)
 
-		# Maintain some sort of ranking or scoring system to determine which order gets pushed up to the top
+		# Maintain some sort of ranking or scoring system to determine which order gets pushed to the top
 		orders = self.orderRanking(orders)
 		return self.match(orders)
 
@@ -54,7 +54,7 @@ class AssignmentServer:
 	# A super simple ranking system - based on the time the order was placed
 	# In a real system, take other flags (like say, priorityCustomer) into account
 	def orderRanking(self, orders):
-		orders.sort(key=lambda x: x.time, reverse=True)
+		orders.sort(key=lambda x: x.time)
 		return orders
 
 
