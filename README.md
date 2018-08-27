@@ -57,7 +57,7 @@ Lastly, we send a HTTP PUT request to our DB server informing it that above agen
  
 My assignment system is extremely simple. Ideally I would like to assign a score (e.g. custom cost function) to each agent taking into account their closeness and waiting time (like say, 1.5 points for each km away from the restaurant and -1 point for every 5 minutes spend idle. The executive with the lowest score would then be assigned the order).
 
-### AssignmentServer.py
+### Utilities.py
 
 **haversine_helper**: Nothing fancy. A method to compute the distance between 2 points (taken from a post on stackoverflow)
 
